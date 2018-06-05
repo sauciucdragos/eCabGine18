@@ -6,7 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <head>
     <meta charset="utf-8">
     <title>Patient view</title>
-  
+
     <style type="text/css">
     a {
      padding-left: 5px;
@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </style>
   </head>
   <body>
-    
+
    <!-- Search form (start) -->
    <form method='post' action="<?= base_url() ?>index.php/PatientController/loadRecord" >
       <select name="search">
@@ -39,8 +39,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <th>Birth Date</th>
         <th>CNP</th>
     </tr>
-    <?php 
-    
+    <?php
+
     foreach($result as $data){
   $id =$data['id_patient'];
       $firstname =$data['first_name'];
@@ -54,18 +54,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       echo "<td>".$birthdate."</td>";
         echo "<td>".$cnp."</td>";
       echo "</tr>";
-    
+
 
 
     }
-  
+
     if(count($result) == 0){
       echo "<tr>";
       echo "<td colspan='3'>No record found.</td>";
       echo "</tr>";
     }
     ?>
-    <a href="<?php echo site_url('add_patient'); ?>">Add Patient</a> | 
+    <a href="<?php echo site_url('PatientController/create'); ?>">Add Patient</a> |
    </table>
 
    <!-- Paginate -->
