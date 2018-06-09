@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 09, 2018 at 09:33 AM
--- Server version: 5.7.19
--- PHP Version: 5.6.31
+-- Generation Time: Jun 09, 2018 at 11:51 AM
+-- Server version: 5.7.21
+-- PHP Version: 5.6.35
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -3487,22 +3487,22 @@ INSERT INTO `name_of_medical_check_up` (`id_name_of_medical_check_up`, `type_of_
 DROP TABLE IF EXISTS `patient`;
 CREATE TABLE IF NOT EXISTS `patient` (
   `id_patient` int(12) NOT NULL AUTO_INCREMENT,
-  `first_name` varchar(255) NOT NULL,
-  `last_name` varchar(255) NOT NULL,
-  `birth_date` date NOT NULL,
-  `id_county` int(100) NOT NULL,
-  `id_city` int(100) NOT NULL,
-  `address` varchar(255) NOT NULL,
-  `job` varchar(50) NOT NULL,
-  `company` varchar(50) NOT NULL,
-  `phone_number` varchar(20) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `CNP` bigint(13) NOT NULL,
-  `marital_status` varchar(50) NOT NULL,
+  `first_name` varchar(255) DEFAULT NULL,
+  `last_name` varchar(255) DEFAULT NULL,
+  `birth_date` date DEFAULT NULL,
+  `id_county` int(100) DEFAULT NULL,
+  `id_city` int(100) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `job` varchar(50) DEFAULT NULL,
+  `company` varchar(50) DEFAULT NULL,
+  `phone_number` varchar(20) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `CNP` bigint(13) DEFAULT NULL,
+  `marital_status` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_patient`),
   KEY `id_county` (`id_county`),
   KEY `id_city` (`id_city`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `patient`
@@ -3510,7 +3510,8 @@ CREATE TABLE IF NOT EXISTS `patient` (
 
 INSERT INTO `patient` (`id_patient`, `first_name`, `last_name`, `birth_date`, `id_county`, `id_city`, `address`, `job`, `company`, `phone_number`, `email`, `CNP`, `marital_status`) VALUES
 (1, 'nume1', 'pren1', '2065-05-01', 53, 1812, 'adresa1', 'job1', 'comp1', '12345678', 'asdf@dfghj', 12345678912345, 'necas'),
-(2, 'nume2', 'pren2', '2000-08-20', 18, 2439, 'adresa2', 'job2', 'comp2', '12345678', 'wert@dfg', 1234567891234567, 'divot');
+(2, 'nume2', 'pren2', '2000-08-20', 18, 2439, 'adresa2', 'job2', 'comp2', '12345678', 'wert@dfg', 1234567891234567, 'divot'),
+(3, 'Mihaela', 'Crisan', '2018-06-05', 5, 2, 'str emerson nr 4, 4', '', '', '757975080', 'm.crisan11@gmail.com', 0, '');
 
 -- --------------------------------------------------------
 
