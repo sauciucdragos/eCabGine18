@@ -13,7 +13,7 @@
         $query = $this->db->get('user');
         return $query->result();
 }
-
+   //This function is for inserting the existing record
       public function insert() { 
           $data = array(
         'last_name' => $this->input->post('last_name'),
@@ -23,17 +23,17 @@
     return $this->db->insert('user', $data);
          
       } 
-   
-      public function delete($id_no) { 
-         if ($this->db->delete("ecabgine", "id_no = ".$id_no)) { 
+   //This function is for deleting the existing record
+      public function delete($user) { 
+         if ($this->db->delete("user", "user = ".$user)) { 
             return true; 
          } 
       } 
-   
-      public function update($data,$old_id_no) { 
+   //This function is for updating the existing record
+      public function update($data,$old_user) { 
          $this->db->set($data); 
-         $this->db->where("id_no", $old_id_no); 
-         $this->db->update("ecabgine", $data); 
+         $this->db->where("user", $old_user); 
+         $this->db->update("user", $data); 
       } 
    } 
 ?> 

@@ -35,7 +35,7 @@
   
       public function add_user() { 
          $this->load->helper('form'); 
-         $this->load->view('Admin_adduser'); 
+        // $this->load->view('Admin_adduser'); 
          
           $data['title'] = 'Create user';
          
@@ -49,5 +49,42 @@
 
         $this->load->view('admin_test', $data);
         }
+   
+    public function update_User_list() { 
+         $this->load->helper('form'); 
+         $user = $this->uri->segment('3'); 
+         $query = $this->db->get_where("user",array("user"=>$user));
+         $data['user'] = $query->result(); 
+         $data['old_user'] = $user; 
+         $this->load->view('Edit_user',$data); 
+      } 
+  
+      public function update_user(){ 
+//         $this->load->model('Admin_page');
+//			
+//         $data = array( 
+//             
+//            'user' => $this->input->post('user') 
+//         ); 
+//			
+//         $old_user = $this->input->post('old_user'); 
+//         $this->Admin_page->update($data); 
+//			
+//         $query = $this->db->get("user"); 
+//         $data['user'] = $query->result(); 
+         $this->load->view('Edit_user'); 
+      } 
+      public function delete_user() {
+          $this->load->model('Admin_page');
+          $user=$this->uri->segment('3');
+          $this->Admin_page->delete($user);
+          
+          $query=$this->db->get("user");
+          $data['records'] =$query->result();
+          
+          
+          $this->load->view('User_list',$data);
+          
+      }
    } 
 ?>

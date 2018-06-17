@@ -43,9 +43,9 @@
                         <thead>
                          <tr>
                         <th>ID</th>
-                        <th>user</th>
-                        <th>first_name</th>
-                        <th>last_name</th>
+                        <th>User</th>
+                        <th>First name</th>
+                        <th>Last name</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -56,6 +56,8 @@
                         <td> <?php echo $utilizator ->user; ?> </td>
                         <td> <?php echo $utilizator ->first_name; ?> </td>
                         <td> <?php echo $utilizator ->last_name; ?> </td>
+                        <td><a href="index.php/Edit_user/update"<?php echo $utilizator ->id_user; ?>" class="btn btn-primary">Edit</a></td>
+                        <td><a href="index.php/Edit_user/update"<?php echo $utilizator ->id_user; ?>" class="btn btn-primary">Delete</a></td>
                     </tr>
         
 <?php endforeach; ?>
@@ -64,8 +66,6 @@
                 </tbody>
             </table>
             <a href="#" class="btn btn-primary">Add user</a>
-            <a href="#" class="btn btn-primary">Edit</a>
-            <a href="#" class="btn btn-primary">Delete</a>
         </div>
    
 

@@ -52,3 +52,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'PatientController';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+$route['user'] = 'Admin_controller';
+$route['user'] = "Admin_controller"; 
+$route['user/add'] = 'Admin_controller/add_user'; 
+$route['user/add_view'] = 'Admin_controller/add_user_view';
+$route['user/edit/(\d+)'] = 'Admin_controller/update_user_view/$1'; 
+$route['user/delete/(\d+)'] = 'Admin_controller/delete_user/$1';

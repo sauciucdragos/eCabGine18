@@ -12,24 +12,24 @@
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" 
           integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" 
           crossorigin="anonymous">
-      <title>Add user page</title> 
+      <title>Edit user page</title> 
    </head> 
    <body> 
          <div class="container" style="margin-top:30px">  
          <nav class="navbar navbar-light bg-light navbar-expand-lg fixed-top">
-             <a href="#" class="navbar-brand">Add user page</a>
+             <a href="#" class="navbar-brand">Edit user page</a>
          </nav>
           
              
-<?php echo form_open('Admin_controller/add_user'); ?>
+<?php echo form_open('Admin_controller/update_User_list'); ?>
   <div class="form-group">
       <div class="form-group">
           <br><br>
     <label for="exampleInputUser name">User name</label>
-    <input type="text" name="user" class="form-control" placeholder="Enter User name">
+    <input type="text" name="user" class="form-control" placeholder="Enter User name" >
   </div>
     <label for="First name">First name</label>
-    <input  type="text" name="first_name" class="form-control" placeholder="Enter First name" value="<?php echo "php code"?>">    
+    <input  type="text" name="first_name" class="form-control" placeholder="Enter First name">    
   </div>
   <div class="form-group">
     <label for="exampleInputLast name">Last name</label>
@@ -63,4 +63,5 @@
          
    </body>
 </html>
+
 
