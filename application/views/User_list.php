@@ -11,13 +11,13 @@
           integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" 
           crossorigin="anonymous">
 
-    <title>Admin page!</title>
+    <title>User list page!</title>
   </head>
   <body>
      
      <div class="container" style="margin-top:30px">  
      <nav class="navbar navbar-light bg-light navbar-expand-lg fixed-top">
-            <a href="#" class="navbar-brand">My Admin page</a>
+            <a href="#" class="navbar-brand">My user list admin page</a>
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -36,7 +36,7 @@
                 </li>
             </ul>
      </nav><br><br>
-                     <h2> Lista utilizatori </h2>
+                     <h2> User list </h2>
                        <div class="container" style="margin-top:30px">
             
                         <table class="table table-striped">
@@ -56,8 +56,8 @@
                         <td> <?php echo $utilizator ->user; ?> </td>
                         <td> <?php echo $utilizator ->first_name; ?> </td>
                         <td> <?php echo $utilizator ->last_name; ?> </td>
-                        <td><a href="index.php/Edit_user/update"<?php echo $utilizator ->id_user; ?>" class="btn btn-primary">Edit</a></td>
-                        <td><a href="index.php/Edit_user/update"<?php echo $utilizator ->id_user; ?>" class="btn btn-primary">Delete</a></td>
+                        <td><a href="update_user/<?php echo $utilizator ->id_user; ?>" class="btn btn-primary">Edit</a></td>
+                        <td><a href="Delete_user/<?php echo $utilizator ->id_user; ?>" class="btn btn-primary">Delete</a></td>
                     </tr>
         
 <?php endforeach; ?>

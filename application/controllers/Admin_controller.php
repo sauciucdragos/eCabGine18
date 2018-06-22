@@ -57,22 +57,15 @@
          $data['user'] = $query->result(); 
          $data['old_user'] = $user; 
          $this->load->view('Edit_user',$data); 
+         var_dump($data);
       } 
   
       public function update_user(){ 
-//         $this->load->model('Admin_page');
-//			
-//         $data = array( 
-//             
-//            'user' => $this->input->post('user') 
-//         ); 
-//			
-//         $old_user = $this->input->post('old_user'); 
-//         $this->Admin_page->update($data); 
-//			
-//         $query = $this->db->get("user"); 
-//         $data['user'] = $query->result(); 
-         $this->load->view('Edit_user'); 
+          $userId = $this->uri->segment('3');
+          $userData = $this->Admin_page->get_user($userId);
+          $data['user'] = current($userData);
+
+           $this->load->view('Edit_user', $data); 
       } 
       public function delete_user() {
           $this->load->model('Admin_page');

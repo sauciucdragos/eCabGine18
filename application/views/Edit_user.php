@@ -17,37 +17,54 @@
    <body> 
          <div class="container" style="margin-top:30px">  
          <nav class="navbar navbar-light bg-light navbar-expand-lg fixed-top">
-             <a href="#" class="navbar-brand">Edit user page</a>
-         </nav>
-          
-             
-<?php echo form_open('Admin_controller/update_User_list'); ?>
-  <div class="form-group">
-      <div class="form-group">
-          <br><br>
-    <label for="exampleInputUser name">User name</label>
-    <input type="text" name="user" class="form-control" placeholder="Enter User name" >
-  </div>
-    <label for="First name">First name</label>
-    <input  type="text" name="first_name" class="form-control" placeholder="Enter First name">    
-  </div>
-  <div class="form-group">
-    <label for="exampleInputLast name">Last name</label>
-    <input type="text" name="last_name" class="form-control" placeholder="Enter Last name">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-  </div>
-   <div class="form-group">
-    <label for="exampleInputPassword1"> Confirm Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirm Password">
-  </div>
-    <input type="submit" class="btn btn-primary" name="submit" value="Add user" />
-
-              </nav><br><br>
-              <div class="container" style="margin-top:30px">
-
+             <a href="#" class="navbar-brand">My Edit user page</a>
+         
+  <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="navbar-item">
+                   <a href="http://www.google.com" class="btn btn-primary">Medical check-up</a> 
+                </li>
+                 <li class="navbar-item">
+                   <a href="#" class="btn btn-default">Laboratory tests</a> 
+                </li>
+                <li class="navbar-item">
+                   <a href="#" class="btn btn-default">Users list</a> 
+                <li class="navbar-item">
+                   <a href="#" class="btn btn-default">Practice administration</a> 
+                </li>
+            </ul>
+     </nav><br><br>
+                     <h2> Edit User list </h2>
+                       <div class="container" style="margin-top:30px">
+            
+                        <table class="table table-striped">
+                        <thead>
+                         <tr>
+                        <th>ID</th>
+                        <th>User</th>
+                        <th>First name</th>
+                        <th>Last name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr >
+                                     
+                        <td><input type="hidden" name ="id_user" value="<?php echo $user ->id_user; ?>"> </td>
+                        <td><input type="text" name ="user" value="<?php echo $user ->user; ?>"> </td>
+                        <td> <?php echo $user ->first_name; ?> </td>
+                        <td> <?php echo $user ->last_name; ?> </td>
+                       <td><a href="#<?php echo $user ->id_user; ?>" class="btn btn-primary">Save changes</a></td>
+                    </tr>
+        
+                        
+                    
+                </tbody>
+            </table>
+        </div>
+   
  <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 

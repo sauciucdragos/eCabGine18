@@ -13,6 +13,12 @@
         $query = $this->db->get('user');
         return $query->result();
 }
+      public function get_user($userId) 
+      {
+         $query = $this->db->get_where("user",array("id_user"=>$userId));
+        return $query->result();
+
+}
    //This function is for inserting the existing record
       public function insert() { 
           $data = array(
@@ -32,7 +38,7 @@
    //This function is for updating the existing record
       public function update($data,$old_user) { 
          $this->db->set($data); 
-         $this->db->where("user", $old_user); 
+         $this->db->where("id_user", $old_user); 
          $this->db->update("user", $data); 
       } 
    } 
