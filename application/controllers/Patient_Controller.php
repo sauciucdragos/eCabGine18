@@ -19,7 +19,7 @@ class Patient_Controller extends CI_Controller {
     }
 
     public function index() {
-        redirect('PatientController/loadRecord');
+        //redirect('PatientController/loadRecord');
     }
 
     public function loadRecord($rowno = 0) {
@@ -36,7 +36,7 @@ class Patient_Controller extends CI_Controller {
         }
 
 // Row per page
-        $rowperpage = 2;
+        $rowperpage = 4;
 
 // Row position
         if ($rowno != 0) {
@@ -50,14 +50,13 @@ class Patient_Controller extends CI_Controller {
         $users_record = $this->Patient_Data->getData($rowno, $rowperpage, $search_text);
 
 // Pagination Configuration
-        $config['base_url'] = base_url() . 'index.php/PatientController/loadRecord';
+       $config['base_url'] = base_url() . 'index.php/Patient_Controller/loadRecord';
         $config['use_page_numbers'] = TRUE;
         $config['total_rows'] = $allcount;
         $config['per_page'] = $rowperpage;
 
 // Initialize
         $this->pagination->initialize($config);
-
         $data['pagination'] = $this->pagination->create_links();
         $data['result'] = $users_record;
         $data['row'] = $rowno;
@@ -72,25 +71,22 @@ class Patient_Controller extends CI_Controller {
 
         $this->load->helper('form');
         $this->load->library('form_validation');
-
-
-
         $this->form_validation->set_rules('first_name', 'First name', 'required');
         $this->form_validation->set_rules('last_name', 'Last name', 'required');
         $this->form_validation->set_rules('birth_date', 'Birth date', 'required');
-$this->form_validation->set_rules('id_county','County' );
-$this->form_validation->set_rules('id_city','City' );
-$this->form_validation->set_rules('adress', 'Adress');
-$this->form_validation->set_rules('job', 'Job');
-$this->form_validation->set_rules('company', 'Company');
-$this->form_validation->set_rules('phone_number', 'Phone number', 'required');
-$this->form_validation->set_rules('email', 'Email');
-$this->form_validation->set_rules('CNP', 'CNP');
-$this->form_validation->set_rules('marital_status', 'Marital Status');
+        $this->form_validation->set_rules('id_county', 'County');
+        $this->form_validation->set_rules('id_city', 'City');
+        $this->form_validation->set_rules('adress', 'Adress');
+        $this->form_validation->set_rules('job', 'Job');
+        $this->form_validation->set_rules('company', 'Company');
+        $this->form_validation->set_rules('phone_number', 'Phone number', 'required');
+        $this->form_validation->set_rules('email', 'Email');
+        $this->form_validation->set_rules('CNP', 'CNP');
+        $this->form_validation->set_rules('marital_status', 'Marital Status');
 
         if ($this->form_validation->run() === FALSE) {
-
-            $this->load->view('Add_Patient');
+            $data['counties'] = $this->Patient_Data->getCounty();
+            $this->load->view('Add_Patient', $data);
         } else {
             $data = array(
                 'first_name' => $this->input->post('first_name'),
@@ -101,7 +97,6 @@ $this->form_validation->set_rules('marital_status', 'Marital Status');
                 'address' => $this->input->post('adress'),
                 'job' => $this->input->post('job'),
                 'company' => $this->input->post('company'),
-              
                 'phone_number' => $this->input->post('phone_number'),
                 'email' => $this->input->post('email'),
                 'CNP' => $this->input->post('CNP'),
@@ -113,6 +108,47 @@ $this->form_validation->set_rules('marital_status', 'Marital Status');
             $data['message'] = 'Data Inserted Successfully';
 //Loading View
             $this->load->view('Add_Patient', $data);
+        }
+    }
+
+    public function getCity() {
+        // POST data 
+        $postData = $this->input->post();
+        // get data 
+        $data = $this->Patient_Data->getCity($postData);
+        echo json_encode($data);
+    }
+
+    public function editPatient() {
+        // Get 
+        $edit = $this->input->get('edit');
+
+        if (!isset($edit)) {
+               $data['response'] = $this->Patient_Data->getPatientById($edit);
+              $data['view'] = 2;
+            // load view
+            $this->load->view('Edit_Patient', $data);
+        } else {
+
+            // Check submit button POST or not
+            if ($this->input->post('submit') != NULL) {
+                // POST data
+                $postData = $this->input->post();
+
+                // Update record
+                $this->Patient_Data->updateUser($postData, $edit);
+
+                // Redirect page
+                redirect('Patient_Controller/loadRecord');
+            } else {
+
+                // get data by id
+                $data['response'] = $this->Patient_Data->getPatientById($edit);
+                $data['view'] = 2;
+
+                // load view
+                $this->load->view('Edit_Patient', $data);
+            }
         }
     }
 
