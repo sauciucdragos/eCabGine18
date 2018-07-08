@@ -15,6 +15,7 @@
       <title>Edit user page</title> 
    </head> 
    <body> 
+      
          <div class="container" style="margin-top:30px">  
          <nav class="navbar navbar-light bg-light navbar-expand-lg fixed-top">
              <a href="#" class="navbar-brand">My Edit user page</a>
@@ -50,22 +51,34 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr >
-                                     
+       
+                    <tr >  
+                         <?php
+       $data = array(
+        'type'  => 'hidden',
+        'id'    => 'id_user',
+        'name'  => 'user',
+        'value' => 'last_name',
+        'value' => 'first_name',
+);
+
+echo form_input($data);
+ ?>
+                         <?php echo form_open('Admin_controller/update_user/'.$user ->id_user);?> 
                         <td><input type="hidden" name ="id_user" value="<?php echo $user ->id_user; ?>"> </td>
                         <td><input type="text" name ="user" value="<?php echo $user ->user; ?>"> </td>
-                        <td> <?php echo $user ->first_name; ?> </td>
-                        <td> <?php echo $user ->last_name; ?> </td>
-                       <td><a href="#<?php echo $user ->id_user; ?>" class="btn btn-primary">Save changes</a></td>
+                        <td><input type="text" name ="First name" value=" <?php echo $user ->first_name; ?>"> </td>
+                        <td><input type="text" name ="Last name" value=" <?php echo $user ->last_name; ?>" </td>
+                        <td><button type="submit" class="btn btn-primary">Save changes</button></td>
+                        <?php echo form_close();?> 
                     </tr>
-        
-                        
-                    
+                 
                 </tbody>
             </table>
+                
         </div>
-   
- <!-- Optional JavaScript -->
+                     
+                            <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 

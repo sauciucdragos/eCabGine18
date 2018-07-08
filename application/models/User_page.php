@@ -1,7 +1,7 @@
 <?php
 
 
-    Class Admin_page extends CI_Model {
+    Class User_page extends CI_Model {
 	
       function __construct() { 
          parent::__construct(); 
@@ -30,8 +30,8 @@
          
       } 
    //This function is for deleting the existing record
-      public function delete($user) { 
-         if ($this->db->delete("user", "user = ".$user)) { 
+      public function delete($id_user) { 
+         if ($this->db->delete("user", "id_user = ".$id_user)) { 
             return true; 
          } 
       } 
@@ -39,7 +39,15 @@
       public function update($data,$old_user) { 
          $this->db->set($data); 
          $this->db->where("id_user", $old_user); 
+         $this->db->update("user", $data);  
+         
+      }
+      
+      public function save($data,$old_user) { 
+         $this->db->set($data); 
+         $this->db->where("id_user", $old_user); 
          $this->db->update("user", $data); 
       } 
    } 
+   
 ?> 

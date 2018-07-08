@@ -4,7 +4,9 @@
       function __construct() { 
          parent::__construct(); 
          $this->load->helper('url'); 
-         $this->load->model('Admin_page');
+         $this->load->model('User_page');       
+         $this->load->helper('form');
+
                
       } 
       
@@ -25,7 +27,7 @@
       } 
       
       public function add() { 
-          $this->load->helper('form');
+         $this->load->helper('form');
          $query = $this->db->get("user"); 
          $data['user'] = $query->result(); 
 			
@@ -39,7 +41,7 @@
          
           $data['title'] = 'Create user';
          
-         $this->Admin_page->insert();
+         $this->User_page->insert();
         $this->load->view('success');
       } 
   
@@ -54,26 +56,31 @@
          $this->load->helper('form'); 
          $user = $this->uri->segment('3'); 
          $query = $this->db->get_where("user",array("user"=>$user));
+         
          $data['user'] = $query->result(); 
-         $data['old_user'] = $user; 
+         $data['old_user'] = $user;
          $this->load->view('Edit_user',$data); 
-         var_dump($data);
+        
       } 
   
       public function update_user(){ 
           $userId = $this->uri->segment('3');
-          $userData = $this->Admin_page->get_user($userId);
+          $userData = $this->User_page->get_user($userId);
           $data['user'] = current($userData);
-
-           $this->load->view('Edit_user', $data); 
+         
+          $this->load->view('Edit_user', $data); 
+          
+//         $user['id_user'];
+        
       } 
+      
       public function delete_user() {
-          $this->load->model('Admin_page');
+          $this->load->model('User_page');
           $user=$this->uri->segment('3');
-          $this->Admin_page->delete($user);
+          $this->User_page->delete($user);
           
           $query=$this->db->get("user");
-          $data['records'] =$query->result();
+          $data['user'] =$query->result();
           
           
           $this->load->view('User_list',$data);
