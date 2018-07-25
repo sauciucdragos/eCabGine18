@@ -7,26 +7,24 @@
          parent::__construct(); 
       } 
    
-      public function get_users()
-{
+      public function get_users(){
 
         $query = $this->db->get('user');
         return $query->result();
 }
-      public function get_user($userId) 
-      {
-         $query = $this->db->get_where("user",array("id_user"=>$userId));
+      public function get_user($userId) {
+        $query = $this->db->get_where("user",array("id_user"=>$userId));
         return $query->result();
 
 }
    //This function is for inserting the existing record
       public function insert() { 
-          $data = array(
+        $data = array(
         'last_name' => $this->input->post('last_name'),
         'first_name' => $this->input->post('first_name')
     );
 
-    return $this->db->insert('user', $data);
+        return $this->db->insert('user', $data);
          
       } 
    //This function is for deleting the existing record
@@ -36,17 +34,24 @@
          } 
       } 
    //This function is for updating the existing record
-      public function update($data,$old_user) { 
+      public function update($data, $id_user) { 
          $this->db->set($data); 
-         $this->db->where("id_user", $old_user); 
+         $this->db->where("id_user", $id_user); 
          $this->db->update("user", $data);  
          
       }
       
-      public function save($data,$old_user) { 
-         $this->db->set($data); 
-         $this->db->where("id_user", $old_user); 
-         $this->db->update("user", $data); 
+       public function save($data,$id_user) { 
+         $data = array(
+         'id_user'=>$this->input->post('id_user'),
+         'last_name' => $this->input->post('last_name'),
+         'first_name' => $this->input->post('first_name')
+    );
+       //$this->db->set($data); 
+       //$this->db->where("id_user", $id_user); 
+
+          return $this->db->replace('user', $data);
+         
       } 
    } 
    

@@ -29,7 +29,7 @@
     <input type="text" name="user" class="form-control" placeholder="Enter User name">
   </div>
     <label for="First name">First name</label>
-    <input  type="text" name="first_name" class="form-control" placeholder="Enter First name" value="<?php echo "php code"?>">    
+    <input  type="text" name="first_name" class="form-control" placeholder="Enter First name">    
   </div>
   <div class="form-group">
     <label for="exampleInputLast name">Last name</label>

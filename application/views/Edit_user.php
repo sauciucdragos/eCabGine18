@@ -15,7 +15,6 @@
       <title>Edit user page</title> 
    </head> 
    <body> 
-      
          <div class="container" style="margin-top:30px">  
          <nav class="navbar navbar-light bg-light navbar-expand-lg fixed-top">
              <a href="#" class="navbar-brand">My Edit user page</a>
@@ -39,6 +38,7 @@
             </ul>
      </nav><br><br>
                      <h2> Edit User list </h2>
+                     <div class="alert-danger"><?php echo validation_errors(); ?></div>
                        <div class="container" style="margin-top:30px">
             
                         <table class="table table-striped">
@@ -58,21 +58,23 @@
         'type'  => 'hidden',
         'id'    => 'id_user',
         'name'  => 'user',
-        'value' => 'last_name',
-        'value' => 'first_name',
+        'Last name' => 'last_name',
+        'First name' => 'first_name',
 );
 
 echo form_input($data);
  ?>
                          <?php echo form_open('Admin_controller/update_user/'.$user ->id_user);?> 
+                         
                         <td><input type="hidden" name ="id_user" value="<?php echo $user ->id_user; ?>"> </td>
                         <td><input type="text" name ="user" value="<?php echo $user ->user; ?>"> </td>
-                        <td><input type="text" name ="First name" value=" <?php echo $user ->first_name; ?>"> </td>
-                        <td><input type="text" name ="Last name" value=" <?php echo $user ->last_name; ?>" </td>
+                        <td><input type="text" name ="first_name" value=" <?php echo $user ->first_name; ?>"> </td>
+                        <td><input type="text" name ="last_name" value=" <?php echo $user ->last_name; ?>" </td>
                         <td><button type="submit" class="btn btn-primary">Save changes</button></td>
-                        <?php echo form_close();?> 
+                        
+                            <?php echo form_close();?> 
                     </tr>
-                 
+                
                 </tbody>
             </table>
                 
