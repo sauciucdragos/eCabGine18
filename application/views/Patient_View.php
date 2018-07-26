@@ -17,14 +17,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </style>
     </head>
     <body>
-
-        <!-- Search form (start) -->
-        <form method='post' action="<?= base_url() ?>index.php/Patient_Controller/loadRecord" >
-            <select name="search">
+        <form method="post" accept-charset="utf-8" action="<?php echo site_url("Patient_Controller/getSearchName"); ?>">
+            <select name="dropdown" onchange="this.form.submit()">
                 <option value="name">Name</option>
                 <option value="surname">Surname</option>
                 <option value="cnp">CNP</option>
-               
             </select>
             <input type='text' name='search' value='<?= $search ?>'><input type='submit' name='submit' value='Search'>
         </form>
@@ -50,6 +47,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <td>' . $data['birth_date'] . '</td>
                         <td>' . $data['CNP'] . '</td>
                        <td>    <a href="' . site_url() . '/Patient_Controller/editPatient?edit=' . $data['id_patient'] . '">Edit</a></td>
+                           
                     </tr>';
                 $sno++;
             }
@@ -57,7 +55,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 
-<?php echo "</tr>"; ?>
+            <?php echo "</tr>"; ?>
 
 
 
@@ -66,7 +64,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         <!-- Paginate -->
         <div style='margin-top: 10px;'>
-<?= $pagination; ?>
+            <?= $pagination; ?>
         </div>
 
     </body>
