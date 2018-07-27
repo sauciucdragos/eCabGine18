@@ -36,7 +36,7 @@
                 </li>
             </ul>
      </nav><br><br>
-                     <h2> User list </h2>
+                     <h2> User list </h2> 
                        <div class="container" style="margin-top:30px">
             
                         <table class="table table-striped">
@@ -65,7 +65,7 @@
                     
                 </tbody>
             </table>
-            <a href="#" class="btn btn-primary">Add user</a>
+             <a href="add/<?php echo $utilizator ->id_user; ?>" class="btn btn-primary">Add user</a>
         </div>
    
 

@@ -20,8 +20,10 @@
    //This function is for inserting the existing record
       public function insert() { 
         $data = array(
-        'last_name' => $this->input->post('last_name'),
-        'first_name' => $this->input->post('first_name')
+        'user' => $this->input->post('user'),
+        'first_name' => $this->input->post('first_name'),
+        'last_name' => $this->input->post('last_name')
+        
     );
 
         return $this->db->insert('user', $data);

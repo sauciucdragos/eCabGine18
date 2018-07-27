@@ -31,7 +31,7 @@
                    <a href="#" class="btn btn-default">Laboratory tests</a> 
                 </li>
                 <li class="navbar-item">
-                   <a href="#" class="btn btn-default">Users list</a> 
+                   <a href="<?php echo site_url('Admin_controller/user_list');?>" class="btn btn-default">Users list</a> 
                 <li class="navbar-item">
                    <a href="#" class="btn btn-default">Practice administration</a> 
                 </li>
@@ -70,7 +70,7 @@ echo form_input($data);
                         <td><input type="text" name ="user" value="<?php echo $user ->user; ?>"> </td>
                         <td><input type="text" name ="first_name" value=" <?php echo $user ->first_name; ?>"> </td>
                         <td><input type="text" name ="last_name" value=" <?php echo $user ->last_name; ?>" </td>
-                        <td><button type="submit" class="btn btn-primary">Save changes</button></td>
+                        <td><a href="<?php echo site_url('Admin_controller/save_user');?>"> <button type="submit" class="btn btn-primary">Save changes</button></td>
                         
                             <?php echo form_close();?> 
                     </tr>

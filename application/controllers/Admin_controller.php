@@ -6,8 +6,7 @@
          $this->load->helper('url'); 
          $this->load->model('User_page');       
          $this->load->helper('form');
-
-               
+          
       } 
       
       public function index() { 
@@ -16,6 +15,7 @@
 			
          $this->load->helper('url'); 
          $this->load->view('Admin_page_view'); 
+         
       } 
       
       public function user_list() { 
@@ -42,6 +42,7 @@
          $data['title'] = 'Create user';
          
          $this->User_page->insert();
+         
          $this->load->view('success');
       } 
   
@@ -49,6 +50,7 @@
          $data['title'] = ucfirst($page); 
 
          $this->load->view('admin_test', $data);
+         $this->load->view('User_list', $data);
        
         }
    
@@ -75,27 +77,38 @@
                     $userData['first_name'] = $this->input->post('first_name');
                     $userData['last_name'] = $this->input->post('last_name');
                     $this->User_page->update($userData, $userId);
+                    
                 }                 
             }
             
             $userData = $this->User_page->get_user($userId);
             $data['user'] = current($userData);
-            $this->load->view('Edit_user', $data); 
-      //    $this->load->view('Save_user', $data); 
+            //$this->load->view('Edit_user', $data);
+            if ($this->form_validation->run() === FALSE)
+            {
+                $this->load->view('Edit_user', $data); 
+            }
+            else
+            {
+                $this->load->view('Save_user', $data);
+            }
+            
+            
+             
 
         
       } 
       
       public function delete_user() {
             $this->load->model('User_page');
-            $user=$this->uri->segment('3');
-            $this->User_page->delete($user);
+            $id_user=$this->uri->segment('3');
+            $this->User_page->delete($id_user);
           
             $query=$this->db->get("user");
             $data['user'] =$query->result();
           
           
-            $this->load->view('User_list',$data);
+            $this->load->view('Delete_user',$data);
           
       }
      

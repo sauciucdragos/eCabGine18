@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- <Required meta tags -->
+    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -11,47 +11,38 @@
           integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" 
           crossorigin="anonymous">
 
-    <title>Admin page!</title>
+    <title>User changed successfully!</title>
   </head>
   <body>
      
      <div class="container" style="margin-top:30px">  
      <nav class="navbar navbar-light bg-light navbar-expand-lg fixed-top">
-            <a href="#" class="navbar-brand">My Admin page</a>
+            <a href="<?php echo site_url('Admin_controller/');?>"  class="navbar-brand">My Admin page</a>
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="btn-group-vertical">
-            <ul class="navbar-nav ml-auto"></ul>
-                </div>
-     </nav><br><br>
-                <div class="alert alert-success">
-                     <h5> Welcome to your main admin page! </h5>
-                </div>
-                     <br><br>
-                       <div class="container" style="margin-top:30px">
-              <div class="btn-group btn-group-justified">             
-             <div class="btn-group-vertical">
-                 <ul >
-              
-                    <div class="btn-group">
-                   <a href="http://www.google.com" class="btn btn-primary btn-lg">Medical check-up</a> 
-               </div>
-                     <div class="btn-group">
-                   <a href="#" class="btn btn-default btn-lg">Laboratory tests</a> 
-                </div>
-                     <div class="btn-group">
-                   <a href="<?php echo site_url('Admin_controller/user_list');?>"class="btn btn-default btn-lg">Users list</a> 
-                   </div>
-                <div class="btn-group">
-                   <a href="#" class="btn btn-default btn-lg">Practice administration</a> 
-                </div>
+            <ul class="navbar-nav ml-auto">
+                <li class="navbar-item">
+                   <a href="http://www.google.com" class="btn btn-primary">Medical check-up</a> 
+                </li>
+                 <li class="navbar-item">
+                   <a href="#" class="btn btn-default">Laboratory tests</a> 
+                </li>
+                <li class="navbar-item">
+                   <a href="<?php echo site_url('Admin_controller/user_list');?>" class="btn btn-default">Users list</a> 
+                <li class="navbar-item">
+                   <a href="#" class="btn btn-default">Practice administration</a> 
+                </li>
             </ul>
-                </div>
-              </div>
-
+     </nav><br><br>
+     <div class="alert alert-success" role="alert">
+                     <h2>User changed successfully! </h2>
+                     </div>
                        
+                    
+              
+        </div>
    
 
     <!-- Optional JavaScript -->

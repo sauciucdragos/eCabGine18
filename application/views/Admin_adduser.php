@@ -18,7 +18,26 @@
          <div class="container" style="margin-top:30px">  
          <nav class="navbar navbar-light bg-light navbar-expand-lg fixed-top">
              <a href="#" class="navbar-brand">Add user page</a>
+             <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="navbar-item">
+                   <a href="http://www.google.com" class="btn btn-primary">Medical check-up</a> 
+                </li>
+                 <li class="navbar-item">
+                   <a href="#" class="btn btn-default">Laboratory tests</a> 
+                </li>
+                <li class="navbar-item">
+                   <a href="<?php echo site_url('Admin_controller/user_list');?>" class="btn btn-default">Users list</a> 
+                <li class="navbar-item">
+                   <a href="#" class="btn btn-default">Practice administration</a> 
+                </li>
+            </ul>
+     </nav><br><br>
          </nav>
+             
           
              
 <?php echo form_open('Admin_controller/add_user'); ?>
