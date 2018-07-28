@@ -44,7 +44,7 @@
                         <table class="table table-striped">
                         <thead>
                          <tr>
-                        <th>ID</th>
+                        <!--<th>ID</th>-->
                         <th>User</th>
                         <th>First name</th>
                         <th>Last name</th>
@@ -66,7 +66,7 @@ echo form_input($data);
  ?>
                          <?php echo form_open('Admin_controller/update_user/'.$user ->id_user);?> 
                          
-                        <td><input type="hidden" name ="id_user" value="<?php echo $user ->id_user; ?>"> </td>
+                        <!--<td><input type="hidden" name ="id_user" value="<?php echo $user ->id_user; ?>"> </td>-->
                         <td><input type="text" name ="user" value="<?php echo $user ->user; ?>"> </td>
                         <td><input type="text" name ="first_name" value=" <?php echo $user ->first_name; ?>"> </td>
                         <td><input type="text" name ="last_name" value=" <?php echo $user ->last_name; ?>" </td>

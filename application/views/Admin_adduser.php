@@ -37,30 +37,33 @@
             </ul>
      </nav><br><br>
          </nav>
-             
-          
-             
+           
 <?php echo form_open('Admin_controller/add_user'); ?>
-  <div class="form-group">
-      <div class="form-group">
-          <br><br>
+  <div class="alert-danger"><?php echo validation_errors(); ?></div>
+  
+  <div class="form-group"> 
     <label for="exampleInputUser name">User name</label>
     <input type="text" name="user" class="form-control" placeholder="Enter User name">
   </div>
+          
+         <div class="form-group">
     <label for="First name">First name</label>
     <input  type="text" name="first_name" class="form-control" placeholder="Enter First name">    
   </div>
+          
   <div class="form-group">
     <label for="exampleInputLast name">Last name</label>
     <input type="text" name="last_name" class="form-control" placeholder="Enter Last name">
   </div>
+          
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    <input type="password" class="form-control" name="password" placeholder="Password">
   </div>
+          
    <div class="form-group">
     <label for="exampleInputPassword1"> Confirm Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirm Password">
+    <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password">
   </div>
     <input type="submit" class="btn btn-primary" name="submit" value="Add user" />
 

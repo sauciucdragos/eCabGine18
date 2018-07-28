@@ -36,28 +36,30 @@
                 </li>
             </ul>
      </nav><br><br>
-                     <h2> User list </h2> 
+     <h2> User list </h2> 
+     
                        <div class="container" style="margin-top:30px">
             
                         <table class="table table-striped">
                         <thead>
                          <tr>
-                        <th>ID</th>
+                        <!--<th>ID</th>-->
                         <th>User</th>
                         <th>First name</th>
                         <th>Last name</th>
+                        <th colspan="2" class="text-center"><a href="add/" class="btn btn-primary">Add user</a></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr >
                        <?php foreach ($user as $utilizator): ?>
                                      
-                        <td> <?php echo $utilizator ->id_user; ?> </td>
+                        <!--<td> <?php echo $utilizator ->id_user; ?> </td>-->
                         <td> <?php echo $utilizator ->user; ?> </td>
                         <td> <?php echo $utilizator ->first_name; ?> </td>
                         <td> <?php echo $utilizator ->last_name; ?> </td>
-                        <td><a href="update_user/<?php echo $utilizator ->id_user; ?>" class="btn btn-primary">Edit</a></td>
-                        <td><a href="Delete_user/<?php echo $utilizator ->id_user; ?>" class="btn btn-primary">Delete</a></td>
+                        <td class="text-center"><a href="update_user/<?php echo $utilizator ->id_user; ?>" class="btn btn-info">Edit</a></td>
+                        <td class="text-center"><a href="Delete_user/<?php echo $utilizator ->id_user; ?>" class="btn btn-danger">Delete</a></td>
                     </tr>
         
 <?php endforeach; ?>
@@ -65,7 +67,7 @@
                     
                 </tbody>
             </table>
-             <a href="add/<?php echo $utilizator ->id_user; ?>" class="btn btn-primary">Add user</a>
+             
         </div>
    
 
