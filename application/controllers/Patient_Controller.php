@@ -36,7 +36,7 @@ class Patient_Controller extends CI_Controller {
         }
          
         // Row per page
-        $rowperpage = 10;
+        $rowperpage = 3;
         // Row position
         if ($this->input->post('submit') != NULL) {
             $dropdown = $this->input->post('dropdown');
@@ -44,7 +44,6 @@ class Patient_Controller extends CI_Controller {
                 case 'name':
                     $allcount = $this->Examination_Data->getrecordCountName($search_text);
                     $users_record = $this->Examination_Data->getDataName($rowno, $rowperpage, $search_text);
-
                     break;
                 case 'surname':
                     $users_record = $this->Examination_Data->getDataSurname($rowno, $rowperpage, $search_text);

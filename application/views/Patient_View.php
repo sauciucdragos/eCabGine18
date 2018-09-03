@@ -4,29 +4,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!DOCTYPE html>
 
 <html lang="en">
-    <head>
-       
-        <meta charset="utf-8">
-        <title>Patient view</title>
+   <head> 
+         <!-- <Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <style >
-            a {
-                padding-left: 5px;
-                padding-right: 5px;
-                margin-left: 5px;
-                margin-right: 5px;
-            }
-        </style>
-    </head>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" 
+          
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" 
+          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" 
+          crossorigin="anonymous">
+    <script type = 'text/javascript' src = "<?php echo base_url(); 
+   ?>js/sample.js"></script>
+     
+   </head> 
     <body>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <p>Search patient</p>
+       </br>
+       
         <form action="<?= site_url('Patient_Controller/loadRecord'); ?>" method="POST"  id="dropdown">
+             <p>Search patient</p>
             <select name="dropdown" id =" dropdown" onchange="myFunction(this)">
                 <option value="name"  <?php echo (isset($_POST['dropdown']) && ($_POST['dropdown']) == 'name') ? 'selected="selected"' : ''; ?> >Name </option>
                 <option value="surname" <?php echo (isset($_POST['dropdown']) && ($_POST['dropdown']) == 'surname') ? 'selected="selected"' : ''; ?>>Surname</option>
                 <option value="cnp"<?php echo (isset($_POST['dropdown']) && ($_POST['dropdown']) == 'cnp') ? 'selected="selected"' : ''; ?>>CNP</option> 
-
             </select>
 
             <script>
@@ -42,16 +44,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </script>
             <input type='text'  name='search' id="search" value="<?php if ($search) { print $search; } ?>">
            
-            <input type='submit'id="submit" name='submit'>
-           
+            <input type='submit'class="btn btn-primary"id="submit" name='submit'>
+                
         </form>
-         
-            <button id="submit-buttons" onclick="ClearFields()"type="submit" ​​​​​>Clear search</button>
        
+        <form action="<?= site_url('Patient_Controller/loadRecord') ?>">
+              <input type='submit'class="btn btn-primary"onclick="ClearFields() "id="submit-buttons" name='submit' value="Clear">
+        </form>
         <br/>
 
         <!-- Patients list List -->
-        <table border='1' width='60%' style='border-collapse: collapse;'>
+       <div class="container" style="margin-top:30px">
+            
+                        <table class="table table-striped">
             <tr>
 
                 <th>Name</th>
@@ -82,17 +87,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             }
             ?>
             <?php echo "</tr>"; ?>
-
-
-
-            <a href="<?php echo site_url('Patient_Controller/create'); ?>">Add Patient</a> 
-        </table>
-
+            <!-- Paginate -->
         <!-- Paginate -->
-        <!-- Paginate -->
-        <div style='margin-top: 10px;'>
+        <div  class="page-item">
             <?= $pagination; ?>
         </div>
+              </table>
+        <br>
+             <a href="<?php echo site_url('Patient_Controller/create'); ?>" class="btn btn-primary">Add patient</a>
+
+
+        
 
     </body>
 </html>

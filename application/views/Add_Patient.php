@@ -1,5 +1,17 @@
 <!doctype html>
 <html>
+     <head> 
+         <!-- <Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" 
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" 
+          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" 
+          crossorigin="anonymous">
+      <title>Add user page</title> 
+   </head> 
     <body>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -12,7 +24,7 @@
                 // City change
                 $('#sel_county').change(function () {
                     var id_county = $(this).val();
-                    
+
                     // AJAX request
                     $.ajax({
                         url: '<?= base_url() ?>index.php/Patient_Controller/getCity',

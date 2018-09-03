@@ -8,8 +8,6 @@ class Examination_Data extends CI_Model {
         $this->load->helper('url');
     }
 
-
-
     public function getDataName($rowno, $rowperpage, $search = "") {
 
         $this->db->select('*');
