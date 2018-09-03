@@ -16,58 +16,74 @@ class Patient_Controller extends CI_Controller {
 
 // Load model
         $this->load->model('Patient_Data');
+        $this->load->model('Examination_Data');
     }
 
     public function index() {
-        //redirect('PatientController/loadRecord');
+        redirect('PatientController/loadRecord');
     }
 
-
     public function loadRecord($rowno = 0) {
-
-// Search text
+        // Search text
         $search_text = "";
         if ($this->input->post('submit') != NULL) {
-
             $search_text = $this->input->post('search');
             $this->session->set_userdata(array("search" => $search_text));
         } else {
-
             if ($this->session->userdata('search') != NULL) {
                 $search_text = $this->session->userdata('search');
             }
         }
+         
+        // Row per page
+        $rowperpage = 10;
+        // Row position
+        if ($this->input->post('submit') != NULL) {
+            $dropdown = $this->input->post('dropdown');
+            switch ($dropdown) {
+                case 'name':
+                    $allcount = $this->Examination_Data->getrecordCountName($search_text);
+                    $users_record = $this->Examination_Data->getDataName($rowno, $rowperpage, $search_text);
 
-// Row per page
-        $rowperpage = 4;
+                    break;
+                case 'surname':
+                    $users_record = $this->Examination_Data->getDataSurname($rowno, $rowperpage, $search_text);
+                    $allcount = $this->Examination_Data->getrecordCountSurname($search_text);
+                    break;
+                case 'cnp':
+                    $users_record = $this->Examination_Data->getDataCNP($rowno, $rowperpage, $search_text);
+                    $allcount = $this->Examination_Data->getrecordCountCNP($search_text);
+                    break;
+            }
+        } else {
+            $allcount = $this->Examination_Data->getrecordCountName($search_text);
+             $users_record = $this->Examination_Data->getDataName($rowno, $rowperpage, $search_text);
+        }
 
-// Row position
         if ($rowno != 0) {
             $rowno = ($rowno - 1) * $rowperpage;
         }
 
-// All records count
-        $allcount = $this->Patient_Data->getrecordCount($search_text);
-
-// Get records
-        $users_record = $this->Patient_Data->getData($rowno, $rowperpage, $search_text);
-
-// Pagination Configuration
+        // Pagination Configuration
         $config['base_url'] = base_url() . 'index.php/Patient_Controller/loadRecord';
         $config['use_page_numbers'] = TRUE;
         $config['total_rows'] = $allcount;
         $config['per_page'] = $rowperpage;
 
-// Initialize
+        // Initialize
         $this->pagination->initialize($config);
-        $data['pagination'] = $this->pagination->create_links();
+
+      $data['pagination'] = $this->pagination->create_links();
         $data['result'] = $users_record;
         $data['row'] = $rowno;
         $data['search'] = $search_text;
 
-// Load view
+        // Load view
+         $this->load->view('header');
         $this->load->view('Patient_View', $data);
+        $this->load->view('footer');
     }
+
 
     public function create() {
 

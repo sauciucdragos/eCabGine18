@@ -23,35 +23,30 @@ class Examination_Controller extends CI_Controller {
         $this->load->view('Examination_View');
 
         if ($this->input->post('submit') != NULL) {
-
+            $search_text = $this->input->post('search');
+            $this->session->set_userdata(array("search" => $search_text));
 
             switch ($dropdown) {
 
                 case 'name':
-                    $search_text = $this->input->post('search');
-                    $this->session->set_userdata(array("search" => $search_text));
+
                     $users_record = $this->Examination_Data->getDataName($search_text);
-                    $data['result'] = $users_record;
-                    $data['search'] = $search_text;
-                    $this->load->view('Examination_View_Search', $data);
+
                     break;
                 case 'surname':
-                    $search_text = $this->input->post('search');
-                    $this->session->set_userdata(array("search" => $search_text));
+
                     $users_record = $this->Examination_Data->getDataSurname($search_text);
-                    $data['result'] = $users_record;
-                    $data['search'] = $search_text;
-                    $this->load->view('Examination_View_Search', $data);
+
                     break;
                 case 'cnp':
-                    $search_text = $this->input->post('search');
-                    $this->session->set_userdata(array("search" => $search_text));
+
                     $users_record = $this->Examination_Data->getDataCNP($search_text);
-                    $data['result'] = $users_record;
-                    $data['search'] = $search_text;
-                    $this->load->view('Examination_View_Search', $data);
+
                     break;
             }
+            $data['result'] = $users_record;
+            $data['search'] = $search_text;
+            $this->load->view('Examination_View_Search', $data);
 // Load view
         } else {
 
@@ -64,8 +59,8 @@ class Examination_Controller extends CI_Controller {
     public function examinatePatient() {
         $edit = $this->input->get('edit');
         $data['counties'] = $this->Patient_Data->getCounty();
-      $data['cities'] = $this->Patient_Data->getCityPatient();
-      
+        $data['cities'] = $this->Patient_Data->getCityPatient();
+
         if (isset($edit)) {
             // get data by id
             $data['demo'] = $this->Patient_Data->getPatientById($edit);

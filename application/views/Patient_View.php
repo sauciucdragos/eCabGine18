@@ -2,8 +2,10 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 <!DOCTYPE html>
+
 <html lang="en">
     <head>
+       
         <meta charset="utf-8">
         <title>Patient view</title>
 
@@ -17,14 +19,35 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </style>
     </head>
     <body>
-        <form method="post" accept-charset="utf-8" action="<?php echo site_url("Patient_Controller/getSearchName"); ?>">
-            <select name="dropdown" onchange="this.form.submit()">
-                <option value="name">Name</option>
-                <option value="surname">Surname</option>
-                <option value="cnp">CNP</option>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <p>Search patient</p>
+        <form action="<?= site_url('Patient_Controller/loadRecord'); ?>" method="POST"  id="dropdown">
+            <select name="dropdown" id =" dropdown" onchange="myFunction(this)">
+                <option value="name"  <?php echo (isset($_POST['dropdown']) && ($_POST['dropdown']) == 'name') ? 'selected="selected"' : ''; ?> >Name </option>
+                <option value="surname" <?php echo (isset($_POST['dropdown']) && ($_POST['dropdown']) == 'surname') ? 'selected="selected"' : ''; ?>>Surname</option>
+                <option value="cnp"<?php echo (isset($_POST['dropdown']) && ($_POST['dropdown']) == 'cnp') ? 'selected="selected"' : ''; ?>>CNP</option> 
+
             </select>
-            <input type='text' name='search' value='<?= $search ?>'><input type='submit' name='submit' value='Search'>
+
+            <script>
+                function myFunction(selectObject) {
+                    var dropdown = selectObject.value;
+                    document.getElementById('dropdown').value = dropdown;
+                    document.getElementById('dropdown');
+                }
+                function ClearFields() {
+                    document.getElementById("search").value = "";
+                }
+
+            </script>
+            <input type='text'  name='search' id="search" value="<?php if ($search) { print $search; } ?>">
+           
+            <input type='submit'id="submit" name='submit'>
+           
         </form>
+         
+            <button id="submit-buttons" onclick="ClearFields()"type="submit" ​​​​​>Clear search</button>
+       
         <br/>
 
         <!-- Patients list List -->
@@ -38,8 +61,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <th>Edit patient</th>
             </tr>
             <?php
-            $sno = 1;
+            $sno = $row+1;
             foreach ($result as $data) {
+
                 echo '<tr>
                        
                         <td>' . $data['first_name'] . '</td>
@@ -51,10 +75,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </tr>';
                 $sno++;
             }
+            if (count($result) == 0) {
+                echo "<tr>";
+                echo "<td colspan='5'>No record found.</td>";
+                echo "</tr>";
+            }
             ?>
-
-
-
             <?php echo "</tr>"; ?>
 
 
@@ -62,6 +88,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <a href="<?php echo site_url('Patient_Controller/create'); ?>">Add Patient</a> 
         </table>
 
+        <!-- Paginate -->
         <!-- Paginate -->
         <div style='margin-top: 10px;'>
             <?= $pagination; ?>
