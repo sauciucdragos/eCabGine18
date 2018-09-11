@@ -28,18 +28,31 @@ class Patient_Controller extends CI_Controller {
         $search_text = "";
         if ($this->input->post('submit') != NULL) {
             $search_text = $this->input->post('search');
+            $dropdown = $this->input->post('dropdown');
             $this->session->set_userdata(array("search" => $search_text));
+            $this->session->set_userdata(array("dropdown" => $dropdown));
         } else {
             if ($this->session->userdata('search') != NULL) {
                 $search_text = $this->session->userdata('search');
             }
+
+            if ($this->session->userdata('dropdown') != NULL) {
+                $dropdown = $this->session->userdata('dropdown');
+            }
         }
-         
+
+        if ($this->input->get('submit') === 'Clear') {
+            // Clear session and post from search data.
+            $this->session->set_userdata(array("search" => null));
+            $this->session->set_userdata(array("dropdown" => null));
+            $search_text = null;
+            $dropdown    = null;
+        }
+
         // Row per page
         $rowperpage = 3;
         // Row position
         if ($this->input->post('submit') != NULL) {
-            $dropdown = $this->input->post('dropdown');
             switch ($dropdown) {
                 case 'name':
                     $allcount = $this->Examination_Data->getrecordCountName($search_text);
@@ -150,7 +163,7 @@ class Patient_Controller extends CI_Controller {
     }
 
     public function editPatient() {
-        // Get 
+        // Get
         $edit = $this->input->get('edit');
         $data['counties'] = $this->Patient_Data->getCounty();
         $data['cities'] = $this->Patient_Data->getCityPatient();
